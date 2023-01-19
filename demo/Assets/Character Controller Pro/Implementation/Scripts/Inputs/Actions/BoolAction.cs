@@ -65,7 +65,7 @@ namespace Lightbug.CharacterControllerPro.Implementation
         bool previousCanceled;
 
         /// <summary>
-        /// Initialize the values.//初始化值
+        /// Initialize the values.
         /// </summary>
         public void Initialize()
         {

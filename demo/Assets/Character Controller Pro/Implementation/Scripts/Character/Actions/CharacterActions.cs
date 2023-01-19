@@ -15,7 +15,7 @@ public struct CharacterActions
 	public BoolAction @jetPack;
 	public BoolAction @dash;
 	public BoolAction @crouch;
-		public BoolAction @attack;
+
 
     // Float actions
 	public FloatAction @pitch;
@@ -39,9 +39,7 @@ public struct CharacterActions
 		@dash.Reset();
 		@crouch.Reset();
 
-           @attack.Reset();
-
-        @pitch.Reset();
+		@pitch.Reset();
 		@roll.Reset();
 
 		@movement.Reset();
@@ -70,11 +68,9 @@ public struct CharacterActions
 
 		@crouch = new BoolAction();
 		@crouch.Initialize();
-            @attack = new BoolAction();
-            @attack.Initialize();
 
 
-       @pitch = new FloatAction();
+		@pitch = new FloatAction();
 		@roll = new FloatAction();
 
 		@movement = new Vector2Action();
@@ -95,10 +91,8 @@ public struct CharacterActions
 		@jetPack.value = inputHandler.GetBool( "Jet Pack" );
 		@dash.value = inputHandler.GetBool( "Dash" );
 		@crouch.value = inputHandler.GetBool( "Crouch" );
-            @attack.value = inputHandler.GetBool("AttackOnGround");
 
-
-            @pitch.value = inputHandler.GetFloat( "Pitch" );
+		@pitch.value = inputHandler.GetFloat( "Pitch" );
 		@roll.value = inputHandler.GetFloat( "Roll" );
 
 		@movement.value = inputHandler.GetVector2( "Movement" );
@@ -116,9 +110,8 @@ public struct CharacterActions
 		@jetPack.value = characterActions.jetPack.value;
 		@dash.value = characterActions.dash.value;
 		@crouch.value = characterActions.crouch.value;
-			attack.value = characterActions.attack.value;    
 
-            @pitch.value = characterActions.pitch.value;
+		@pitch.value = characterActions.pitch.value;
 		@roll.value = characterActions.roll.value;
 
 		@pitch.value = characterActions.pitch.value;
@@ -138,8 +131,8 @@ public struct CharacterActions
 		@jetPack.Update( dt );
 		@dash.Update( dt );
 		@crouch.Update( dt );
-           @attack.Update( dt );
-        }
+
+    }
 
 
 }
