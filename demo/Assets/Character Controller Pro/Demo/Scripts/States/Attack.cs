@@ -24,6 +24,7 @@ public class Attack : CharacterState
     public float timer;
     public static bool isAttack = false;//开始获取输入
     public static string isRealAttack ="nextCombo";//开始进入下一阶段
+    protected  static bool canChangeState = false;
 
     protected override void Awake()
     {
@@ -42,6 +43,7 @@ public class Attack : CharacterState
         if (Input.GetMouseButtonDown(0) && !isAttack)//&和&&都可以用作逻辑与的运算符，表示逻辑与。
                                                              //&&还具有短路的功能，即如果第一个表达式为false，则不再计算第二个表达式
         {
+            canChangeState = false;
             isAttack = true;
             combo++;
             if (combo > 4)
@@ -70,7 +72,14 @@ public class Attack : CharacterState
     /// </summary>
     public override void CheckExitTransition()
     {
+        //执行跳跃的时候立即退出
+        //执行方向键的时候，需要等攻击结束之后，才能退出。即本次攻击完成了，移动按键才能生效，否则移动按键会影响攻击的转动方向
+
         if(CharacterActions.jump.Started)
+        {
+            CharacterStateController.EnqueueTransition<NormalMovement>();
+        }
+        if (CharacterActions.movement.value != Vector2.zero & canChangeState)
         {
             CharacterStateController.EnqueueTransition<NormalMovement>();
         }
@@ -83,7 +92,8 @@ public class Attack : CharacterState
     public override void ExitBehaviour(float dt, CharacterState toState)
     {
         isAttack = false;
-        combo = 0;  
+        combo = 0;
+        CharacterActor.alwaysNotGrounded= false;
     }
 
     public override void UpdateBehaviour(float dt)
