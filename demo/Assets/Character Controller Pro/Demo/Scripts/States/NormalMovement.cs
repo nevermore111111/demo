@@ -148,12 +148,13 @@ namespace Lightbug.CharacterControllerPro.Demo
 
         public override void CheckExitTransition()
         {
-            if (CharacterActor.IsGrounded)
+            if (CharacterActions.attack.value)
             {
-                if (CharacterActions.attack.value)
+                if (CharacterActor.IsGrounded)
                 {
-                    CharacterStateController.EnqueueTransition<Attack>();
+                    CharacterStateController.EnqueueTransition<AttackOnGround>();
                 }
+                //增加空中攻击
             }
             if (CharacterActions.jetPack.value)
             {
@@ -182,7 +183,7 @@ namespace Lightbug.CharacterControllerPro.Demo
             reducedAirControlFlag = false;
         }
 
-        
+
 
         /// <summary>
         /// Reduces the amount of acceleration and deceleration (not grounded state) until the character reaches the apex of the jump 
@@ -697,7 +698,7 @@ namespace Lightbug.CharacterControllerPro.Demo
         }
 
         void SetTargetLookingDirection(LookingDirectionParameters.LookingDirectionMovementSource lookingDirectionMode)
-        {            
+        {
             if (lookingDirectionMode == LookingDirectionParameters.LookingDirectionMovementSource.Input)
             {
                 if (CharacterStateController.InputMovementReference != Vector3.zero)
@@ -721,7 +722,7 @@ namespace Lightbug.CharacterControllerPro.Demo
             HandleRotation(dt);
         }
 
-        
+
         public override void PreCharacterSimulation(float dt)
         {
             // Pre/PostCharacterSimulation methods are useful to update all the Animator parameters. 
@@ -802,7 +803,7 @@ namespace Lightbug.CharacterControllerPro.Demo
             bool validSize = CharacterActor.CheckAndInterpolateHeight(
                 CharacterActor.DefaultBodySize.y,
                 crouchParameters.sizeLerpSpeed * dt, sizeReferenceType);
-            
+
             if (validSize)
                 isCrouched = false;
         }
