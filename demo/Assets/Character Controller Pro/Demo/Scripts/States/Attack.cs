@@ -20,7 +20,7 @@ public class Attack : CharacterState
     [Tooltip("用来设置攻击间隔")]
     public float interval=2;
     [Tooltip("动作连击数")]
-    public int combo  = 0 ;
+    protected static int combo  = 1 ;
     public float timer;
     public static bool isAttack = false;//开始获取输入
     public static string isRealAttack ="nextCombo";//开始进入下一阶段
@@ -39,33 +39,34 @@ public class Attack : CharacterState
 
     public  void Update()
     {
-       
-        if (Input.GetMouseButtonDown(0) && !isAttack)//&和&&都可以用作逻辑与的运算符，表示逻辑与。
-                                                             //&&还具有短路的功能，即如果第一个表达式为false，则不再计算第二个表达式
+        if (CharacterActor.IsGrounded)
         {
-            canChangeState = false;
-            isAttack = true;
-            combo++;
-            if (combo > 4)
-            { 
-                combo = 1; 
-            }
-            timer = interval;
-            CharacterActor.Animator.SetInteger(OnGroundStep, combo);
-            
-        }
-        if (timer != 0)
-        {
-            timer -= Time.deltaTime;
-            if (timer <= 0 )
+            if (Input.GetMouseButtonDown(0) && !isAttack)//&和&&都可以用作逻辑与的运算符，表示逻辑与。
+                                                         //&&还具有短路的功能，即如果第一个表达式为false，则不再计算第二个表达式
             {
-                combo = 0;
-                isAttack = false;
-                timer = 0;
+                canChangeState = false;
+                isAttack = true;
+                combo++;
+                if (combo > 4)
+                {
+                    combo = 1;
+                }
+                timer = interval;
                 CharacterActor.Animator.SetInteger(OnGroundStep, combo);
+
+            }
+            if (timer != 0)
+            {
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    combo = 0;
+                    isAttack = false;
+                    timer = 0;
+                    CharacterActor.Animator.SetInteger(OnGroundStep, combo);
+                }
             }
         }
-
     }
     /// <summary>
     /// 执行退出条件
@@ -93,7 +94,6 @@ public class Attack : CharacterState
     {
         isAttack = false;
         combo = 0;
-        CharacterActor.alwaysNotGrounded= false;
     }
 
     public override void UpdateBehaviour(float dt)
@@ -108,6 +108,6 @@ public class Attack : CharacterState
                                 true,
                                 PhysicsActor.RootMotionVelocityType.SetVelocity,
                                 true, PhysicsActor.RootMotionRotationType.AddRotation);
-                           
+
     }
 }

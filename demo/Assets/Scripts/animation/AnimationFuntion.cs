@@ -11,10 +11,13 @@ using UnityEngine;
 
 public class AnimationFuntion : Attack
 {
+    //首先是getinput事件，然后是attackover事件，最后是changestate事件
     public void GetInput()
     {
         Attack.isAttack = false;
         CharacterActor.Animator.SetBool("nextCombo", false);
+        Debug.Log(Attack.combo);
+        
     }
     public void AttackOver()
     {
@@ -29,6 +32,11 @@ public class AnimationFuntion : Attack
     public void Idle()
     {
 
+    }
+    public void ResetCombo()
+    {
+        isAttack = true;
+        Attack.combo = 1;
     }
 
     public override void UpdateBehaviour(float dt)

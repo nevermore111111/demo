@@ -148,9 +148,12 @@ namespace Lightbug.CharacterControllerPro.Demo
 
         public override void CheckExitTransition()
         {
-            if(CharacterActions.attack.value)
+            if (CharacterActor.IsGrounded)
             {
-                CharacterStateController.EnqueueTransition<Attack>();
+                if (CharacterActions.attack.value)
+                {
+                    CharacterStateController.EnqueueTransition<Attack>();
+                }
             }
             if (CharacterActions.jetPack.value)
             {
