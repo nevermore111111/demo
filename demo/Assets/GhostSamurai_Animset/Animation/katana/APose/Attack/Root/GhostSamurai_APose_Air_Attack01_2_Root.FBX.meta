@@ -539,7 +539,9 @@ ModelImporter:
       will be discarded.\n\t'ball_l' has translation animation that will be discarded.\n\t'calf_r'
       has translation animation that will be discarded.\n\t'foot_r' has translation
       animation that will be discarded.\nEvent ResetCombo has a time (0.000000) outside
-      the clip's valid range (0.000000..1.166667). It will never be fired"
+      the clip's valid range (0.000000..1.166667). It will never be firedEvent NewEvent
+      has a time (0.000000) outside the clip's valid range (0.000000..1.166667).
+      It will never be fired"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -577,22 +579,22 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.55191255
+      - time: 0
+        functionName: ResetCombo
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5435792
         functionName: AttackOver
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.85686404
+      - time: 0.96797514
         functionName: CanChangeState
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0
-        functionName: ResetCombo
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
