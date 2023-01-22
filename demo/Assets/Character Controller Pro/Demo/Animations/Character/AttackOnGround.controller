@@ -30,7 +30,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: OnGroundAttack4
-  m_Speed: 1
+  m_Speed: 1.3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8826837913589337848}
@@ -105,8 +105,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: attackOnGroundStep
     m_EventTreshold: 3
-  - m_ConditionMode: 1
-    m_ConditionEvent: nextCombo
+  - m_ConditionMode: 2
+    m_ConditionEvent: isAttack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 9188439712352803551}
@@ -130,7 +130,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: OnGroundAttack1
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -913647334167907869}
@@ -196,8 +196,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: attackOnGroundStep
     m_EventTreshold: 2
-  - m_ConditionMode: 1
-    m_ConditionEvent: nextCombo
+  - m_ConditionMode: 2
+    m_ConditionEvent: isAttack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6576453854361456714}
@@ -227,13 +227,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 1
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: nextCombo
+    m_Controller: {fileID: 0}
+  - m_Name: isAttack
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -307,8 +307,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: attackOnGroundStep
     m_EventTreshold: 1
-  - m_ConditionMode: 1
-    m_ConditionEvent: nextCombo
+  - m_ConditionMode: 2
+    m_ConditionEvent: isAttack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2802848354851885631}
@@ -332,9 +332,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 6
+  - m_ConditionMode: 3
     m_ConditionEvent: attackOnGroundStep
-    m_EventTreshold: 1
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2802848354851885631}
   m_Solo: 0
@@ -357,7 +357,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: OnGroundAttack2
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3718629862868195269}
@@ -388,8 +388,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: attackOnGroundStep
     m_EventTreshold: 4
-  - m_ConditionMode: 1
-    m_ConditionEvent: nextCombo
+  - m_ConditionMode: 2
+    m_ConditionEvent: isAttack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6882487215909118472}
@@ -427,7 +427,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: OnGroundAttack3
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 7090750004406710506}

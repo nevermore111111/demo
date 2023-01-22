@@ -7955,7 +7955,7 @@ MonoBehaviour:
   maxZoom: 12
   collisionDetection: 1
   collisionAffectsZoom: 0
-  detectionRadius: 0.2
+  detectionRadius: 0.3
   layerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -8488,6 +8488,7 @@ GameObject:
   - component: {fileID: 1257029331}
   - component: {fileID: 1257029332}
   - component: {fileID: 1257029333}
+  - component: {fileID: 1257029334}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -8745,7 +8746,7 @@ MonoBehaviour:
     sizeLerpSpeed: 8
   lookingDirectionParameters:
     changeLookingDirection: 1
-    speed: 10
+    speed: 8
     lookingDirectionMode: 0
     target: {fileID: 0}
     stableGroundedLookingDirectionMode: 1
@@ -8842,7 +8843,22 @@ MonoBehaviour:
   runtimeAnimatorController: {fileID: 9100000, guid: a3bcef9bfe4050f4ba035b2941bdf511, type: 2}
   interval: 2
   timer: 0
-  OnGroundStep: attackOnGroundStep
+--- !u!114 &1257029334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257029324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 318cc0df58e67c34495f69ec746b6dfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideAnimatorController: 1
+  runtimeAnimatorController: {fileID: 9100000, guid: 557fef57f4771384eabe45cd95e5d953, type: 2}
+  interval: 2
+  timer: 0
 --- !u!1 &1272562380
 GameObject:
   m_ObjectHideFlags: 0

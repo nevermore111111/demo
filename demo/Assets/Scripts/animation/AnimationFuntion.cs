@@ -14,29 +14,47 @@ public class AnimationFuntion : Attack
     //首先是getinput事件，然后是attackover事件，最后是changestate事件
     public void GetInput()
     {
-        Attack.isAttack = false;
-        CharacterActor.Animator.SetBool("nextCombo", false);
-        Debug.Log(Attack.combo);
         
     }
     public void AttackOver()
     {
-        CharacterActor.Animator.SetBool("nextCombo", true);
-        
+        isAttack =false;
+        CharacterActor.Animator.SetBool("isAttack",false);
     }
     public void  CanChangeState()
     {
-        Attack.canChangeState = true;
+        if (!isAttack)
+        {
+            Attack.canChangeState = true;
+        }
     }
 
     public void Idle()
     {
 
+        if (IsJustEnter)
+        {
+            Attack.combo = 1;
+            IsJustEnter = false;
+            CharacterActor.Animator.SetInteger(Step, Attack.combo);
+            isAttack = true;
+            Debug.Log("shoucijinru ");
+        }
+        else
+        {
+            Attack.combo = 0;
+            CharacterActor.Animator.SetInteger(Step, Attack.combo);
+            Debug.Log("erci");
+            isAttack = false;
+            canChangeState = false;
+        }
     }
     public void ResetCombo()
     {
         isAttack = true;
-        Attack.combo = 1;
+        canNextAct = true;
+        canChangeState=false;
+        CharacterActor.Animator.SetBool("isAttack", true);
     }
 
     public override void UpdateBehaviour(float dt)

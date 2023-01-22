@@ -11,12 +11,11 @@ using UnityEngine;
 /// <summary>
 /// 
 /// <summary>
-public class AttackOnGround : Attack
+public class AttackInAir : Attack
 {
-    //×öÁ½ÖÖ·½·¨£¬1attack¼Ì³Ğnormalmove£¬»òÕßĞ´³ÉÒ»¸öĞÂµÄÀà£¬¶¼¿ÉÒÔÊÔÊÔ¡£
-
-    private string GroundStep = "attackOnGroundStep";
-    
+    //åšä¸¤ç§æ–¹æ³•ï¼Œ1attackç»§æ‰¿normalmoveï¼Œæˆ–è€…å†™æˆä¸€ä¸ªæ–°çš„ç±»ï¼Œéƒ½å¯ä»¥è¯•è¯•ã€‚
+    [Tooltip("åŠ¨ç”»ä¸Šçš„è®°å½•æ”»å‡»æ­¥æ•°çš„å‚æ•°åç§°")]
+    private string AirStep = "attackOnGroundStep";
 
 
 
@@ -33,22 +32,14 @@ public class AttackOnGround : Attack
 
     public void Update()
     {
-        if (CharacterActor.IsGrounded)
+        if (!CharacterActor.IsGrounded)
         {
-            if (Input.GetMouseButtonDown(0) && canNextAct)//&ºÍ&&¶¼¿ÉÒÔÓÃ×÷Âß¼­ÓëµÄÔËËã·û£¬±íÊ¾Âß¼­Óë¡£
-                                                         //&&»¹¾ßÓĞ¶ÌÂ·µÄ¹¦ÄÜ£¬¼´Èç¹ûµÚÒ»¸ö±í´ïÊ½Îªfalse£¬Ôò²»ÔÙ¼ÆËãµÚ¶ş¸ö±í´ïÊ½
+            if (Input.GetMouseButtonDown(0) && canNextAct)//&å’Œ&&éƒ½å¯ä»¥ç”¨ä½œé€»è¾‘ä¸çš„è¿ç®—ç¬¦ï¼Œè¡¨ç¤ºé€»è¾‘ä¸ã€‚
+                                                          //&&è¿˜å…·æœ‰çŸ­è·¯çš„åŠŸèƒ½ï¼Œå³å¦‚æœç¬¬ä¸€ä¸ªè¡¨è¾¾å¼ä¸ºfalseï¼Œåˆ™ä¸å†è®¡ç®—ç¬¬äºŒä¸ªè¡¨è¾¾å¼
             {
-                //canChangeState = false;
-                //isAttack = true;
-                //combo++;
-                //if (combo > 4)
-                //{
-                //    combo = 1;
-                //}
-                //CharacterActor.Animator.SetInteger(Step, combo);
                 canNextAct = false;
                 combo++;
-                if(combo>4)
+                if (combo > 3)
                 {
                     combo = 1;
                 }
@@ -57,26 +48,31 @@ public class AttackOnGround : Attack
         }
     }
     /// <summary>
-    /// Ö´ĞĞÍË³öÌõ¼ş
+    /// æ‰§è¡Œé€€å‡ºæ¡ä»¶
     /// </summary>
     public override void CheckExitTransition()
     {
-        //Ö´ĞĞÌøÔ¾µÄÊ±ºòÁ¢¼´ÍË³ö
-        //Ö´ĞĞ·½Ïò¼üµÄÊ±ºò£¬ĞèÒªµÈ¹¥»÷½áÊøÖ®ºó£¬²ÅÄÜÍË³ö¡£¼´±¾´Î¹¥»÷Íê³ÉÁË£¬ÒÆ¶¯°´¼ü²ÅÄÜÉúĞ§£¬·ñÔòÒÆ¶¯°´¼ü»áÓ°Ïì¹¥»÷µÄ×ª¶¯·½Ïò
-        if (!CharacterActor.IsGrounded)
+        //æ‰§è¡Œè·³è·ƒçš„æ—¶å€™ç«‹å³é€€å‡º
+        //æ‰§è¡Œæ–¹å‘é”®çš„æ—¶å€™ï¼Œéœ€è¦ç­‰æ”»å‡»ç»“æŸä¹‹åï¼Œæ‰èƒ½é€€å‡ºã€‚å³æœ¬æ¬¡æ”»å‡»å®Œæˆäº†ï¼Œç§»åŠ¨æŒ‰é”®æ‰èƒ½ç”Ÿæ•ˆï¼Œå¦åˆ™ç§»åŠ¨æŒ‰é”®ä¼šå½±å“æ”»å‡»çš„è½¬åŠ¨æ–¹å‘
+
+        base.CheckExitTransition();
+        if (canChangeState)
         {
             CharacterStateController.EnqueueTransition<NormalMovement>();
         }
-       base.CheckExitTransition();
     }
     /// <summary>
-    /// Ö´ĞĞÍË³ö
+    /// æ‰§è¡Œé€€å‡º
     /// </summary>
     /// <param name="dt"></param>
     /// <param name="toState"></param>
     public override void ExitBehaviour(float dt, CharacterState toState)
     {
-      base.ExitBehaviour(dt, toState);
+        base.ExitBehaviour(dt, toState);
+        if (CharacterActor.IsGrounded)
+        {
+            CharacterStateController.EnqueueTransition<NormalMovement>();
+        }
     }
 
     public override void UpdateBehaviour(float dt)
@@ -85,14 +81,13 @@ public class AttackOnGround : Attack
     }
     public override void EnterBehaviour(float dt, CharacterState fromState)
     {
-        CharacterActor.Animator.applyRootMotion = true;
+        //CharacterActor.Animator.applyRootMotion = true;
 
         CharacterActor.SetUpRootMotion(
                                 true,
                                 PhysicsActor.RootMotionVelocityType.SetVelocity,
-                                true, PhysicsActor.RootMotionRotationType.AddRotation);
-        Step = GroundStep;
+                                false);
+        Step = AirStep;
         base.EnterBehaviour(dt, fromState);
     }
-
 }

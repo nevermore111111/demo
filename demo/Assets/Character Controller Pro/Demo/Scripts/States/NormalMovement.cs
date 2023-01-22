@@ -155,6 +155,10 @@ namespace Lightbug.CharacterControllerPro.Demo
                     CharacterStateController.EnqueueTransition<AttackOnGround>();
                 }
                 //增加空中攻击
+                if (!CharacterActor.IsGrounded)
+                {
+                    CharacterStateController.EnqueueTransition<AttackInAir>();
+                }
             }
             if (CharacterActions.jetPack.value)
             {
