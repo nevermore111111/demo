@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Lightbug.Utilities;
+using Lightbug.CharacterControllerPro.Implementation;
 
 namespace Lightbug.CharacterControllerPro.Core
 {
@@ -21,8 +22,7 @@ namespace Lightbug.CharacterControllerPro.Core
         [SerializeField]
         bool is2D = false;
 
-        [SerializeField]
-        Vector2 bodySize = new Vector2(1f, 2f);
+        public Vector2 bodySize = new Vector2(1f, 1.6f);
 
         [SerializeField]
         float mass = 50f;
@@ -73,7 +73,7 @@ namespace Lightbug.CharacterControllerPro.Core
         }
 
         CharacterActor characterActor = null;
-
+        
 
         void OnValidate()
         {

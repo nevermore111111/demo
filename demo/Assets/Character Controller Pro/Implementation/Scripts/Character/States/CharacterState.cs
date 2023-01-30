@@ -43,7 +43,7 @@ namespace Lightbug.CharacterControllerPro.Implementation
         /// </summary>
         // public CharacterBrain CharacterBrain{ get; private set; }
         CharacterBrain CharacterBrain = null;
-
+        CharacterBody CharacterBody = null;
         /// <summary>
         /// Gets the current brain actions CharacterBrain component of the gameObject.
         /// </summary>
@@ -66,6 +66,7 @@ namespace Lightbug.CharacterControllerPro.Implementation
             CharacterActor = this.GetComponentInBranch<CharacterActor>();
             CharacterStateController = this.GetComponentInBranch<CharacterActor, CharacterStateController>();
             CharacterBrain = this.GetComponentInBranch<CharacterActor, CharacterBrain>();
+            CharacterBody = this.GetComponentInBranch<CharacterBody>();
         }
 
 

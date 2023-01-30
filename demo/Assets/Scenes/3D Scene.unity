@@ -761,7 +761,7 @@ MonoBehaviour:
   allowCharactersAsStableSurfaces: 1
   slopeLimit: 55
   useStableEdgeWhenLanding: 1
-  stepUpDistance: 0.35
+  stepUpDistance: 1.1
   stepDownDistance: 0.5
   edgeCompensation: 0
   detectGroundWhileAscending: 0
@@ -807,7 +807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is2D: 0
-  bodySize: {x: 0.5, y: 1.9}
+  bodySize: {x: 1, y: 1.6}
   mass: 50
 --- !u!4 &141768897
 Transform:
@@ -1109,6 +1109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 170076735}
   - component: {fileID: 170076734}
+  - component: {fileID: 170076736}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -1193,6 +1194,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 53.932003, y: -283.76, z: -95.380005}
+--- !u!114 &170076736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170076733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &170117450
 GameObject:
   m_ObjectHideFlags: 0
@@ -3983,7 +4004,7 @@ MonoBehaviour:
   allowCharactersAsStableSurfaces: 1
   slopeLimit: 55
   useStableEdgeWhenLanding: 1
-  stepUpDistance: 0.35
+  stepUpDistance: 1.1
   stepDownDistance: 0.5
   edgeCompensation: 0
   detectGroundWhileAscending: 0
@@ -4029,7 +4050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is2D: 0
-  bodySize: {x: 0.5, y: 1.9}
+  bodySize: {x: 1, y: 1.6}
   mass: 50
 --- !u!4 &495837301
 Transform:
@@ -5760,7 +5781,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &890933334
 Canvas:
   m_ObjectHideFlags: 0
@@ -6927,7 +6948,7 @@ MonoBehaviour:
   allowCharactersAsStableSurfaces: 1
   slopeLimit: 55
   useStableEdgeWhenLanding: 1
-  stepUpDistance: 0.35
+  stepUpDistance: 1.1
   stepDownDistance: 0.5
   edgeCompensation: 0
   detectGroundWhileAscending: 0
@@ -6973,7 +6994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is2D: 0
-  bodySize: {x: 0.5, y: 1.9}
+  bodySize: {x: 1, y: 1.6}
   mass: 50
 --- !u!4 &1035178970
 Transform:
@@ -7909,6 +7930,7 @@ GameObject:
   - component: {fileID: 1162800278}
   - component: {fileID: 1162800277}
   - component: {fileID: 1162800275}
+  - component: {fileID: 1162800280}
   m_Layer: 0
   m_Name: Character Camera
   m_TagString: MainCamera
@@ -7955,7 +7977,7 @@ MonoBehaviour:
   maxZoom: 12
   collisionDetection: 1
   collisionAffectsZoom: 0
-  detectionRadius: 0.3
+  detectionRadius: 0.01
   layerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -8027,6 +8049,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &1162800280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162800274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1163041435
 GameObject:
   m_ObjectHideFlags: 0
@@ -9006,7 +9061,7 @@ MonoBehaviour:
   allowCharactersAsStableSurfaces: 1
   slopeLimit: 55
   useStableEdgeWhenLanding: 1
-  stepUpDistance: 0.35
+  stepUpDistance: 1.1
   stepDownDistance: 0.5
   edgeCompensation: 0
   detectGroundWhileAscending: 0
@@ -9052,7 +9107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is2D: 0
-  bodySize: {x: 0.5, y: 1.9}
+  bodySize: {x: 1, y: 1.6}
   mass: 50
 --- !u!4 &1292161159
 Transform:
@@ -9928,7 +9983,7 @@ MonoBehaviour:
   allowCharactersAsStableSurfaces: 1
   slopeLimit: 55
   useStableEdgeWhenLanding: 1
-  stepUpDistance: 0.35
+  stepUpDistance: 1.1
   stepDownDistance: 0.5
   edgeCompensation: 0
   detectGroundWhileAscending: 0
@@ -9974,7 +10029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is2D: 0
-  bodySize: {x: 0.5, y: 1.9}
+  bodySize: {x: 1, y: 1.6}
   mass: 50
 --- !u!4 &1446095595
 Transform:
@@ -12751,7 +12806,7 @@ MonoBehaviour:
   allowCharactersAsStableSurfaces: 1
   slopeLimit: 55
   useStableEdgeWhenLanding: 1
-  stepUpDistance: 0.35
+  stepUpDistance: 1.1
   stepDownDistance: 0.5
   edgeCompensation: 0
   detectGroundWhileAscending: 0
@@ -12797,7 +12852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is2D: 0
-  bodySize: {x: 0.5, y: 1.9}
+  bodySize: {x: 1, y: 1.6}
   mass: 50
 --- !u!4 &2052769034
 Transform:
@@ -13349,7 +13404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is2D: 0
-  bodySize: {x: 0.5, y: 1.6}
+  bodySize: {x: 1, y: 1.6}
   mass: 50
 --- !u!4 &8805377712143352378
 Transform:
@@ -13402,7 +13457,7 @@ MonoBehaviour:
   allowCharactersAsStableSurfaces: 1
   slopeLimit: 55
   useStableEdgeWhenLanding: 1
-  stepUpDistance: 0.6
+  stepUpDistance: 1.1
   stepDownDistance: 0.5
   edgeCompensation: 0
   detectGroundWhileAscending: 0

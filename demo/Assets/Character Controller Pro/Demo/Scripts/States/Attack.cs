@@ -69,6 +69,8 @@ public class Attack : CharacterState
         combo = 0;
         IsJustEnter =true;
         canChangeState = false;
+        //Vector2 vec = CharacterBody.bodySize;
+        //CharacterBody.bodySize = new Vector2(vec.x/1.5f, vec.y);
     }
 
     public override void UpdateBehaviour(float dt)
@@ -78,5 +80,7 @@ public class Attack : CharacterState
     public override void EnterBehaviour(float dt, CharacterState fromState)
     {
         IsJustEnter = true;
+        //Vector2 vec = CharacterBody.bodySize;
+        //CharacterBody.bodySize = new Vector2(vec.x * 1.5f, vec.y);
     }
 }
